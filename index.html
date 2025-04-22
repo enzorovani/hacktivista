@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operante Consistente - Descubra o Código Secreto do Mercado</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#39FF14',secondary:'#1A002A'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+@keyframes pulse {
+0%, 100% { box-shadow: 0 0 15px 8px rgba(57, 255, 20, 0.4); }
+50% { box-shadow: 0 0 25px 12px rgba(57, 255, 20, 0.7); }
+}
+@keyframes glitch {
+0% { transform: translate(0) }
+20% { transform: translate(-2px, 2px) }
+40% { transform: translate(-2px, -2px) }
+60% { transform: translate(2px, 2px) }
+80% { transform: translate(2px, -2px) }
+100% { transform: translate(0) }
+}
+@keyframes typing {
+from { width: 0 }
+to { width: 100% }
+}
+@keyframes blink {
+0%, 100% { opacity: 1 }
+50% { opacity: 0 }
+}
+@keyframes matrix {
+0% { background-position: 0% 0% }
+100% { background-position: 0% 100% }
+}
+.matrix-bg {
+background: linear-gradient(180deg,
+rgba(26,0,42,0.95) 0%,
+rgba(26,0,42,0.98) 100%);
+position: relative;
+overflow: hidden;
+}
+.matrix-bg::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url("https://readdy.ai/api/search-image?query=cyberpunk%20hacker%20code%20matrix%20with%20neon%20green%20text%20falling%20on%20dark%20purple%20background%2C%20binary%20data%20streams%2C%20digital%20rain%20effect%2C%20high%20tech%20interface%2C%20glowing%20green%20symbols&width=1920&height=1080&seq=matrix2&orientation=landscape");
+background-size: cover;
+opacity: 0.2;
+animation: matrix 60s linear infinite;
+pointer-events: none;
+z-index: 0;
+}
+.typing-effect {
+overflow: hidden;
+white-space: nowrap;
+border-right: 3px solid #00ff00;
+animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+}
+.glitch-text {
+animation: glitch 0.5s infinite;
+display: inline-block;
+}
+.pulse-button {
+animation: pulse 2s infinite;
+}
+.terminal {
+font-family: 'Roboto Mono', monospace;
+background-color: rgba(26, 0, 42, 0.8);
+border: 1px solid #39FF14;
+box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+}
+.terminal-header {
+background-color: #1A002A;
+color: #39FF14;
+padding: 5px 10px;
+font-weight: bold;
+display: flex;
+justify-content: space-between;
+border-bottom: 1px solid #39FF14;
+}
+input[type="checkbox"] {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #9900cc;
+border-radius: 4px;
+background-color: transparent;
+position: relative;
+cursor: pointer;
+}
+input[type="checkbox"]:checked::before {
+content: "✓";
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: #00ff00;
+font-size: 14px;
+}
+.countdown {
+font-family: 'Orbitron', sans-serif;
+letter-spacing: 2px;
+}
+.neon-border {
+border: 1px solid #00ff00;
+box-shadow: 0 0 5px #00ff00, inset 0 0 5px #00ff00;
+}
+::-webkit-scrollbar {
+width: 8px;
+height: 8px;
+}
+::-webkit-scrollbar-track {
+background: #000;
+}
+::-webkit-scrollbar-thumb {
+background: #9900cc;
+border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: #00ff00;
+}
+body {
+font-family: 'Roboto Mono', monospace;
+background-color: #000;
+color: #fff;
+}
+.floating-notification {
+position: fixed;
+bottom: 20px;
+left: 20px;
+background-color: rgba(0, 0, 0, 0.8);
+border: 1px solid #00ff00;
+box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+padding: 10px 15px;
+border-radius: 8px;
+z-index: 100;
+max-width: 300px;
+}
+.progress-bar {
+position: fixed;
+top: 0;
+left: 0;
+height: 3px;
+background-color: #00ff00;
+box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+z-index: 1000;
+width: 75%;
+}
+</style>
+</head>
+<body>
+<div class="progress-bar"></div>
+<!-- Floating Notifications -->
+<div class="floating-notification hidden" id="user-notification">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/20 rounded-full">
+<i class="ri-user-line text-primary"></i>
+</div>
+<div>
+<p class="text-xs text-white/80">Rodrigo acabou de se inscrever</p>
+<p class="text-xs text-primary">há 37 segundos</p>
+</div>
+</div>
+</div>
+<!-- Header & Capture Form -->
+<header class="matrix-bg min-h-screen flex flex-col items-center justify-start pt-10 relative">
+<div class="container mx-auto px-4 z-10">
+<div class="max-w-3xl mx-auto text-center mb-8">
+<h1 class="text-4xl md:text-5xl font-bold text-primary mb-4 font-['Orbitron']">DESCUBRA O CÓDIGO SECRETO DO MERCADO</h1>
+<p class="text-xl text-white/90 mb-6">Desbloqueie o cupom <span class="text-primary font-bold">1DEPOSITO</span> e tenha acesso a <span class="glitch-text text-primary font-bold">2X MAIS BANCA</span></p>
+<div class="bg-black/80 border border-secondary rounded-lg p-6 mb-8 neon-border">
+<h2 class="text-2xl font-bold text-white mb-4">MULTIPLIQUE SEU SALDO POR 2X</h2>
+<div class="mb-6 space-y-3">
+<p class="text-white/80">Deposite a partir de R$100 e use o cupom <span class="text-primary font-bold">1DEPOSITO</span></p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+<div class="bg-black/40 p-3 rounded border border-primary">
+<p class="text-white/80">Depósito: R$100</p>
+<p class="text-primary font-bold">=</p>
+<p class="text-white font-bold">R$200 de saldo</p>
+</div>
+<div class="bg-black/40 p-3 rounded border border-primary">
+<p class="text-white/80">Depósito: R$200</p>
+<p class="text-primary font-bold">=</p>
+<p class="text-white font-bold">R$400 de saldo</p>
+</div>
+<div class="bg-black/40 p-3 rounded border border-primary">
+<p class="text-white/80">Depósito: R$500</p>
+<p class="text-primary font-bold">=</p>
+<p class="text-white font-bold">R$1.000 de saldo</p>
+</div>
+</div>
+<p class="text-white/80 text-center">Promoção válida até 26 de abril - Multiplique seu saldo agora!</p>
+</div>
+<form class="space-y-4">
+<div>
+<input type="text" placeholder="Seu nome completo" class="w-full bg-black/60 border border-secondary text-white px-4 py-3 rounded focus:outline-none focus:border-primary">
+</div>
+<div>
+<input type="email" placeholder="Seu melhor e-mail" class="w-full bg-black/60 border border-secondary text-white px-4 py-3 rounded focus:outline-none focus:border-primary">
+</div>
+<div>
+<input type="tel" placeholder="Seu WhatsApp com DDD" class="w-full bg-black/60 border border-secondary text-white px-4 py-3 rounded focus:outline-none focus:border-primary">
+</div>
+<button type="button" class="w-full bg-primary text-black font-bold py-4 px-6 rounded-button text-lg uppercase pulse-button !rounded-button">MULTIPLICAR MEU SALDO POR 2X</button>
+</form>
+<div class="mt-6 flex items-center justify-center">
+<div class="countdown text-white flex items-center gap-2">
+<i class="ri-time-line text-primary ri-lg"></i>
+<span>Promoção expira em:</span>
+<span class="text-primary" id="countdown">05:59:59</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center gap-4 text-white/80">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-shield-check-line text-primary"></i>
+</div>
+<span class="text-sm">Dados Protegidos</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-lock-line text-primary"></i>
+</div>
+<span class="text-sm">Acesso Imediato</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-user-star-line text-primary"></i>
+</div>
+<span class="text-sm"><span id="online-users">147</span> pessoas online</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Products Section -->
+<section class="bg-black py-20">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-primary mb-4 font-['Orbitron']">PACOTES ESPECIAIS COM DESCONTO</h2>
+<p class="text-xl text-white/90 mb-6">Use o cupom <span class="text-primary font-bold">PASCOA5</span> e tenha acesso a ofertas exclusivas</p>
+<div class="typing-effect mx-auto text-2xl text-white/90 max-w-xl">
+DOBROU? AVANÇOU. ATIVE SUA BANCA AGORA.
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+<!-- Product 1 -->
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>operante_consistente.exe</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/20 rounded-lg">
+<i class="ri-file-chart-line text-primary ri-2x"></i>
+</div>
+<h3 class="text-xl font-bold text-white">Guia do Operante Consistente</h3>
+</div>
+<ul class="space-y-2 mb-6 text-white/80">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Você não precisa entender o mercado</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Só precisa seguir as regras</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>A fórmula silenciosa dos que fazem dinheiro calado</span>
+</li>
+</ul>
+<div class="flex items-center justify-between mb-6">
+<div>
+<span class="text-white/60 line-through">R$ 29,90</span>
+<div class="text-2xl font-bold text-primary">R$ 14,90</div>
+</div>
+<button class="bg-primary text-black font-bold py-2 px-4 rounded-button pulse-button !rounded-button">HACKEAR ESSA OFERTA</button>
+</div>
+<!-- Order Bump -->
+<div class="border border-dashed border-secondary rounded p-4 bg-black/40">
+<div class="flex items-start gap-3">
+<input type="checkbox" id="bump1">
+<div>
+<label for="bump1" class="font-bold text-primary cursor-pointer">+ ACESSO VIP AO SCANNER DE OPORTUNIDADES</label>
+<p class="text-sm text-white/70">Adicione apenas R$ 47,00 e receba nosso scanner exclusivo que identifica as melhores entradas em tempo real.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>mandamentos_daytrade.exe</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/20 rounded-lg">
+<i class="ri-book-mark-line text-primary ri-2x"></i>
+</div>
+<h3 class="text-xl font-bold text-white">Os 7 Mandamentos do Day Trade</h3>
+</div>
+<ul class="space-y-2 mb-6 text-white/80">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Princípios fundamentais para sobreviver no day trade</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Regras invioláveis para preservação de capital</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Mindset do trader vencedor</span>
+</li>
+</ul>
+<div class="flex items-center justify-between mb-6">
+<div>
+<span class="text-white/60 line-through">R$ 247,00</span>
+<div class="text-2xl font-bold text-primary">R$ 127,00</div>
+</div>
+<button class="bg-primary text-black font-bold py-2 px-4 rounded-button pulse-button !rounded-button">HACKEAR ESSA OFERTA</button>
+</div>
+<!-- Order Bump -->
+<div class="border border-dashed border-secondary rounded p-4 bg-black/40">
+<div class="flex items-start gap-3">
+<input type="checkbox" id="bump2">
+<div>
+<label for="bump2" class="font-bold text-primary cursor-pointer">+ ACESSO AO WEBINAR "PSICOLOGIA DO TRADER"</label>
+<p class="text-sm text-white/70">Adicione apenas R$ 67,00 e tenha acesso à gravação exclusiva do nosso webinar sobre controle emocional.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 3 - Lista Secreta -->
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>indicadores_secretos.exe</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/20 rounded-lg">
+<i class="ri-line-chart-line text-primary ri-2x"></i>
+</div>
+<h3 class="text-xl font-bold text-white">Lista Secreta de Indicadores Milagrosos</h3>
+</div>
+<p class="text-white/80 mb-4">Esses são os indicadores que ninguém posta nos stories. O que os 3% usam pra parecer que têm um dom. Agora você vai ter também.</p>
+<ul class="space-y-2 mb-6 text-white/80">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>5 Indicadores Exclusivos de Price Action</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>3 Indicadores de Tendência Avançados</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>2 Indicadores de Volume Proprietários</span>
+</li>
+</ul>
+<div class="flex items-center justify-between mb-6">
+<div>
+<span class="text-white/60 line-through">R$ 297,00</span>
+<div class="text-2xl font-bold text-primary">R$ 147,00</div>
+</div>
+<button class="bg-primary text-black font-bold py-2 px-4 rounded-button pulse-button !rounded-button">Acessar Indicadores Secretos</button>
+</div>
+<!-- Order Bump -->
+<div class="border border-dashed border-secondary rounded p-4 bg-black/40">
+<div class="flex items-start gap-3">
+<input type="checkbox" id="bump3">
+<div>
+<label for="bump3" class="font-bold text-primary cursor-pointer">+ TEMPLATE EXCLUSIVO PARA METATRADER</label>
+<p class="text-sm text-white/70">Adicione apenas R$ 57,00 e receba nosso template profissional com todos os indicadores já configurados.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 3.1 - Combo 1 -->
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>combo_iniciacao.exe</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/20 rounded-lg">
+<i class="ri-rocket-line text-primary ri-2x"></i>
+</div>
+<h3 class="text-xl font-bold text-white">🔥 COMBO 1 — INICIAÇÃO MALDITA</h3>
+</div>
+<p class="text-white/80 mb-4">Para quem acha que pode operar sem ritual. Aqui começa a dominação.</p>
+<div class="space-y-2 mb-6">
+<p class="text-white font-bold">Inclui:</p>
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="text-white/80">O Guia do Operante Consistente</span>
+</div>
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="text-white/80">Planilha de Gerenciamento de Banca</span>
+</div>
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="text-white/80">Acesso ao Grupo de Sinais por 30 dias</span>
+</div>
+</div>
+<div class="flex items-center justify-between mb-6">
+<div>
+<span class="text-white/60 line-through">R$ 42,80</span>
+<div class="text-2xl font-bold text-primary">R$ 24,90</div>
+<p class="text-xs text-primary mt-1">🔗 Link limitado a 200 acessos (só hoje)</p>
+</div>
+<button class="bg-primary text-black font-bold py-2 px-4 rounded-button pulse-button !rounded-button">Começar Agora</button>
+</div>
+<!-- Order Bump -->
+<div class="border border-dashed border-secondary rounded p-4 bg-black/40">
+<div class="flex items-start gap-3">
+<input type="checkbox" id="bump3-1">
+<div>
+<label for="bump3-1" class="font-bold text-primary cursor-pointer">+ EXTENSÃO DO GRUPO DE SINAIS</label>
+<p class="text-sm text-white/70">Adicione apenas R$ 37,00 e estenda seu acesso ao grupo de sinais por mais 60 dias.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 3.2 - Combo 2 -->
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>combo_mente_ferro.exe</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/20 rounded-lg">
+<i class="ri-brain-line text-primary ri-2x"></i>
+</div>
+<h3 class="text-xl font-bold text-white">🧠 COMBO 2 — MENTE DE FERRO</h3>
+</div>
+<p class="text-white/80 mb-4">O mercado é guerra mental. E você vai perder sem essa munição.</p>
+<div class="space-y-2 mb-6">
+<p class="text-white font-bold">Inclui:</p>
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="text-white/80">Psicologia de Mercado para OB</span>
+</div>
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="text-white/80">Lista de Gatilhos Psicológicos</span>
+</div>
+</div>
+<div class="flex items-center justify-between mb-6">
+<div>
+<span class="text-white/60 line-through">R$ 72,60</span>
+<div class="text-2xl font-bold text-primary">R$ 39,90</div>
+<p class="text-xs text-primary mt-1">🔗 Liberado apenas por tempo (sai do ar em 6h)</p>
+</div>
+<button class="bg-primary text-black font-bold py-2 px-4 rounded-button pulse-button !rounded-button">Reprogramar minha mente agora</button>
+</div>
+<!-- Order Bump -->
+<div class="border border-dashed border-secondary rounded p-4 bg-black/40">
+<div class="flex items-start gap-3">
+<input type="checkbox" id="bump3-2">
+<div>
+<label for="bump3-2" class="font-bold text-primary cursor-pointer">+ MEDITAÇÃO GUIADA PARA TRADERS</label>
+<p class="text-sm text-white/70">Adicione apenas R$ 27,00 e receba nossa meditação guiada especial para traders.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 3.3 - Combo 3 -->
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>sinais_proibidos.exe</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/20 rounded-lg">
+<i class="ri-radar-line text-primary ri-2x"></i>
+</div>
+<h3 class="text-xl font-bold text-white">🔮 COMBO 3 — SINAIS PROIBIDOS</h3>
+</div>
+<p class="text-white/80 mb-4">Não é só seguir o sinal. É entender por que ele funciona.</p>
+<div class="space-y-2 mb-6">
+<p class="text-white font-bold">Inclui:</p>
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="text-white/80">Lista Secreta de Indicadores Milagrosos</span>
+</div>
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="text-white/80">Mapa Mental da Estratégia "Estrela da Manha"</span>
+</div>
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span class="text-white/80">Calculadora de Martingale Inteligente</span>
+</div>
+</div>
+<div class="flex items-center justify-between mb-6">
+<div>
+<span class="text-white/60 line-through">R$ 129,60</span>
+<div class="text-2xl font-bold text-primary">R$ 59,90</div>
+<p class="text-xs text-primary mt-1">🔗 Link escondido, liberado só por WhatsApp e tempo</p>
+</div>
+<button class="bg-primary text-black font-bold py-2 px-4 rounded-button pulse-button !rounded-button">Desbloquear sinal invisível</button>
+</div>
+<!-- Order Bump -->
+<div class="border border-dashed border-secondary rounded p-4 bg-black/40">
+<div class="flex items-start gap-3">
+<input type="checkbox" id="bump3-3">
+<div>
+<label for="bump3-3" class="font-bold text-primary cursor-pointer">+ ACESSO AO GRUPO DE SINAIS VIP</label>
+<p class="text-sm text-white/70">Adicione apenas R$ 47,00 e receba sinais em tempo real por 30 dias.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>psicologia_ob.exe</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-16 h-16 flex items-center justify-center bg-primary/20 rounded-lg">
+<i class="ri-mental-health-line text-primary ri-2x"></i>
+</div>
+<h3 class="text-xl font-bold text-white">Psicologia de Mercado para Lucrar com OB</h3>
+</div>
+<ul class="space-y-2 mb-6 text-white/80">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>O mercado não é contra você</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Sua mente é</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Saia do ciclo de tilt e entre na rota dos frios e calculistas</span>
+</li>
+</ul>
+<div class="flex items-center justify-between mb-6">
+<div>
+<span class="text-white/60 line-through">R$ 69,90</span>
+<div class="text-2xl font-bold text-primary">R$ 34,90</div>
+</div>
+<button class="bg-primary text-black font-bold py-2 px-4 rounded-button pulse-button !rounded-button">HACKEAR ESSA OFERTA</button>
+</div>
+<!-- Order Bump -->
+<div class="border border-dashed border-secondary rounded p-4 bg-black/40">
+<div class="flex items-start gap-3">
+<input type="checkbox" id="bump4">
+<div>
+<label for="bump4" class="font-bold text-primary cursor-pointer">+ INDICADOR DETECTOR DE OB</label>
+<p class="text-sm text-white/70">Adicione apenas R$ 77,00 e receba nosso indicador exclusivo que identifica Order Blocks automaticamente.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Combo Offer -->
+<div class="max-w-4xl mx-auto terminal rounded-lg overflow-hidden">
+<div class="terminal-header bg-primary">
+<span class="text-black font-bold">COMBO_COMPLETO_VIP.exe</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-8">
+<div class="text-center mb-6">
+<h3 class="text-2xl font-bold text-primary mb-2 font-['Orbitron']">COMBO COMPLETO VIP</h3>
+<p class="text-white/80">Adquira todos os 4 produtos + bônus exclusivos por um preço especial</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+<div class="bg-black/40 p-4 rounded border border-secondary">
+<h4 class="font-bold text-white mb-2">INCLUI:</h4>
+<ul class="space-y-2 text-white/80">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Guia do Operante Consistente</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Os 7 Mandamentos do Day Trade</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Lista Secreta de Indicadores Milagrosos</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-check-line text-primary"></i>
+</div>
+<span>Psicologia de Mercado para Lucrar com OB</span>
+</li>
+</ul>
+</div>
+<div class="bg-black/40 p-4 rounded border border-secondary">
+<h4 class="font-bold text-white mb-2">BÔNUS EXCLUSIVOS:</h4>
+<ul class="space-y-2 text-white/80">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-gift-line text-primary"></i>
+</div>
+<span>Mentoria em Grupo (2 sessões) (valor: R$ 397)</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-gift-line text-primary"></i>
+</div>
+<span>1 Robô Operacional Premium (valor: R$ 697/mês)</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-gift-line text-primary"></i>
+</div>
+<span>Acesso Antecipado a Novas Estratégias</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="text-center mb-8">
+<div class="mb-4">
+<span class="text-white/60 line-through text-xl">De R$ 788,00</span>
+<div class="text-3xl font-bold text-primary">Por apenas R$ 497,00</div>
+<p class="text-white/80 text-sm">ou 12x de R$ 49,70</p>
+</div>
+<button class="bg-primary text-black font-bold py-4 px-8 rounded-button text-xl uppercase pulse-button !rounded-button">ATIVE SUA BANCA AGORA</button>
+<p class="text-white/60 text-sm mt-4">Oferta válida apenas hoje - <span id="today-date">21/04/2025</span></p>
+</div>
+<div class="flex items-center justify-center gap-6">
+<div class="w-12 h-12 flex items-center justify-center">
+<i class="ri-secure-payment-line text-primary ri-2x"></i>
+</div>
+<div class="w-12 h-12 flex items-center justify-center">
+<i class="ri-visa-line text-primary ri-2x"></i>
+</div>
+<div class="w-12 h-12 flex items-center justify-center">
+<i class="ri-mastercard-line text-primary ri-2x"></i>
+</div>
+<div class="w-12 h-12 flex items-center justify-center">
+<i class="ri-bank-card-line text-primary ri-2x"></i>
+</div>
+<div class="w-12 h-12 flex items-center justify-center">
+<i class="ri-paypal-line text-primary ri-2x"></i>
+</div>
+<div class="w-12 h-12 flex items-center justify-center">
+<i class="ri-pie-chart-line text-primary ri-2x"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="bg-black/90 py-20 matrix-bg">
+<div class="container mx-auto px-4 z-10 relative">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-primary mb-4 font-['Orbitron']">RESULTADOS COMPROVADOS</h2>
+<p class="text-xl text-white/90 mb-6">Veja o que nossos alunos estão conquistando</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+<!-- Testimonial 1 -->
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>depoimento_001.log</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/20 rounded-full">
+<i class="ri-user-line text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold text-white">Ricardo Mendes</h4>
+<p class="text-white/60 text-sm">Trader há 2 anos</p>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex text-primary mb-2">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-white/80">"Depois de aplicar as estratégias do Guia do Operante Consistente, consegui sair do prejuízo para uma média de 3% ao dia. Inacreditável como pequenos ajustes fizeram toda diferença."</p>
+</div>
+<div class="bg-black/40 p-3 rounded border border-secondary">
+<div class="flex items-center justify-between">
+<span class="text-white/80">Resultado:</span>
+<span class="text-primary font-bold">+R$ 12.457,00 em 30 dias</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>depoimento_002.log</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/20 rounded-full">
+<i class="ri-user-line text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold text-white">Fernanda Oliveira</h4>
+<p class="text-white/60 text-sm">Trader há 6 meses</p>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex text-primary mb-2">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-white/80">"Os indicadores secretos mudaram completamente minha visão do mercado. Consigo identificar entradas muito mais precisas e minha taxa de acerto subiu para mais de 80%."</p>
+</div>
+<div class="bg-black/40 p-3 rounded border border-secondary">
+<div class="flex items-center justify-between">
+<span class="text-white/80">Resultado:</span>
+<span class="text-primary font-bold">+R$ 8.932,00 em 30 dias</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>depoimento_003.log</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/20 rounded-full">
+<i class="ri-user-line text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold text-white">Marcelo Gomes</h4>
+<p class="text-white/60 text-sm">Trader há 1 ano</p>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex text-primary mb-2">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<p class="text-white/80">"A psicologia de mercado para lucrar com OB foi um divisor de águas. Agora consigo entender o que os grandes players estão fazendo e me posicionar corretamente."</p>
+</div>
+<div class="bg-black/40 p-3 rounded border border-secondary">
+<div class="flex items-center justify-between">
+<span class="text-white/80">Resultado:</span>
+<span class="text-primary font-bold">+R$ 15.743,00 em 30 dias</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Results Chart -->
+<div class="max-w-4xl mx-auto terminal rounded-lg overflow-hidden mb-16">
+<div class="terminal-header">
+<span>resultados_alunos.chart</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<div class="mb-6 text-center">
+<h3 class="text-2xl font-bold text-primary mb-2">PERFORMANCE MÉDIA DOS ALUNOS</h3>
+<p class="text-white/80">Resultados dos últimos 30 dias (em %)</p>
+</div>
+<div id="chart" class="w-full h-80"></div>
+</div>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="terminal rounded-lg overflow-hidden">
+<div class="p-6 text-center">
+<div class="text-3xl font-bold text-primary mb-2">1.457+</div>
+<p class="text-white/80">Alunos Ativos</p>
+</div>
+</div>
+<div class="terminal rounded-lg overflow-hidden">
+<div class="p-6 text-center">
+<div class="text-3xl font-bold text-primary mb-2">87%</div>
+<p class="text-white/80">Taxa de Sucesso</p>
+</div>
+</div>
+<div class="terminal rounded-lg overflow-hidden">
+<div class="p-6 text-center">
+<div class="text-3xl font-bold text-primary mb-2">R$ 11.843</div>
+<p class="text-white/80">Lucro Médio Mensal</p>
+</div>
+</div>
+<div class="terminal rounded-lg overflow-hidden">
+<div class="p-6 text-center">
+<div class="text-3xl font-bold text-primary mb-2">24/7</div>
+<p class="text-white/80">Suporte Exclusivo</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="bg-black/90 py-20 matrix-bg">
+<div class="container mx-auto px-4 z-10 relative">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-primary mb-4 font-['Orbitron']">PERGUNTAS FREQUENTES</h2>
+<p class="text-xl text-white/90 mb-6">Tire suas dúvidas antes de investir</p>
+</div>
+<div class="max-w-3xl mx-auto space-y-6">
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>faq_001.txt</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-white mb-2">Quanto tempo tenho acesso aos materiais?</h4>
+<p class="text-white/80">Você terá acesso vitalício a todos os materiais adquiridos. Atualizações futuras também serão incluídas sem custo adicional.</p>
+</div>
+</div>
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>faq_002.txt</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-white mb-2">Preciso ter experiência prévia para aproveitar o conteúdo?</h4>
+<p class="text-white/80">Não é necessário ter experiência prévia. Os materiais são estruturados para atender desde iniciantes até traders avançados, com conteúdo progressivo.</p>
+</div>
+</div>
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>faq_003.txt</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-white mb-2">Quanto capital preciso para começar a operar?</h4>
+<p class="text-white/80">Recomendamos iniciar com pelo menos R$ 1.000,00, mas é possível começar com valores menores aplicando as técnicas de gestão de risco que ensinamos.</p>
+</div>
+</div>
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>faq_004.txt</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-white mb-2">Os indicadores funcionam em qualquer plataforma?</h4>
+<p class="text-white/80">Sim, fornecemos os indicadores para as principais plataformas do mercado: MetaTrader 4, MetaTrader 5 e TradingView. Instruções detalhadas de instalação são incluídas.</p>
+</div>
+</div>
+<div class="terminal rounded-lg overflow-hidden">
+<div class="terminal-header">
+<span>faq_005.txt</span>
+<div class="flex gap-2">
+<span>_</span>
+<span>□</span>
+<span>×</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-white mb-2">Como funciona a garantia?</h4>
+<p class="text-white/80">Oferecemos garantia incondicional de 7 dias. Se você não ficar satisfeito com o material por qualquer motivo, basta enviar um e-mail para suporte@operanteconsistente.com.br e devolveremos 100% do seu investimento.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-black py-12">
+<div class="container mx-auto px-4">
+<div class="max-w-6xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<h3 class="text-primary font-bold mb-4 text-lg">Sobre Nós</h3>
+<p class="text-white/70 text-sm mb-4">Somos uma equipe de traders profissionais com mais de 10 anos de experiência no mercado financeiro, dedicados a compartilhar estratégias que realmente funcionam.</p>
+<div class="flex gap-4">
+<a href="#" class="text-white/70 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+<a href="#" class="text-white/70 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-telegram-line"></i>
+</div>
+</a>
+<a href="#" class="text-white/70 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-youtube-line"></i>
+</div>
+</a>
+<a href="#" class="text-white/70 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-whatsapp-line"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-primary font-bold mb-4 text-lg">Links Rápidos</h3>
+<ul class="space-y-2 text-white/70 text-sm">
+<li><a href="#" class="hover:text-primary">Início</a></li>
+<li><a href="#" class="hover:text-primary">Produtos</a></li>
+<li><a href="#" class="hover:text-primary">Depoimentos</a></li>
+<li><a href="#" class="hover:text-primary">Grupo VIP</a></li>
+<li><a href="#" class="hover:text-primary">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-primary font-bold mb-4 text-lg">Suporte</h3>
+<ul class="space-y-2 text-white/70 text-sm">
+<li><a href="#" class="hover:text-primary">Central de Ajuda</a></li>
+<li><a href="#" class="hover:text-primary">Política de Privacidade</a></li>
+<li><a href="#" class="hover:text-primary">Termos de Uso</a></li>
+<li><a href="#" class="hover:text-primary">Política de Reembolso</a></li>
+<li><a href="#" class="hover:text-primary">Contato</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-primary font-bold mb-4 text-lg">Contato</h3>
+<ul class="space-y-2 text-white/70 text-sm">
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-mail-line text-primary"></i>
+</div>
+<span>suporte@operanteconsistente.com.br</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-whatsapp-line text-primary"></i>
+</div>
+<span>(11) 97123-4567</span>
+</li>
+<li class="flex items-start gap-2">
+<div class="w-5 h-5 flex items-center justify-center mt-0.5">
+<i class="ri-time-line text-primary"></i>
+</div>
+<span>Seg-Sex: 9h às 18h</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 text-center">
+<p class="text-white/50 text-sm mb-4">© 2025 Operante Consistente. Todos os direitos reservados.</p>
+<p class="text-white/50 text-xs">Este site não constitui recomendação de investimento. Investimentos em renda variável envolvem riscos. Resultados passados não garantem resultados futuros.</p>
+</div>
+</div>
+</div>
+</footer>
+<!-- Chat Flutuante -->
+<div class="fixed bottom-6 right-6 z-50">
+<button class="bg-primary text-black font-bold p-4 rounded-full shadow-lg flex items-center justify-center">
+<i class="ri-message-3-line ri-lg"></i>
+</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Button click handlers
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+button.addEventListener('click', function(e) {
+// Ignore chat button
+if(button.closest('.fixed.bottom-6.right-6')) return;
+// Check if this is the main CTA button
+if(button.textContent.trim() === 'MULTIPLICAR MEU SALDO POR 5X') {
+window.location.href = 'https://bit.ly/valuentionacademytrading';
+} else {
+// Show modal or notification for other buttons
+const modal = document.createElement('div');
+modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+modal.innerHTML = `
+<div class="bg-black border border-primary p-6 rounded-lg max-w-md mx-4">
+<h3 class="text-xl font-bold text-primary mb-4">Atenção!</h3>
+<p class="text-white/80 mb-6">Para acessar esta oferta, primeiro você precisa se cadastrar através do botão principal no topo da página.</p>
+<button class="bg-primary text-black font-bold py-2 px-4 rounded-button w-full">Entendi</button>
+</div>
+`;
+document.body.appendChild(modal);
+modal.querySelector('button').onclick = () => modal.remove();
+}
+});
+});
+// Chart
+const chartDom = document.getElementById('chart');
+const myChart = echarts.init(chartDom);
+const option = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+top: 10,
+right: 10,
+bottom: 20,
+left: 40
+},
+xAxis: {
+type: 'category',
+data: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+axisLine: {
+lineStyle: {
+color: 'rgba(255, 255, 255, 0.3)'
+}
+},
+axisLabel: {
+color: 'rgba(255, 255, 255, 0.7)'
+}
+},
+yAxis: {
+type: 'value',
+axisLine: {
+lineStyle: {
+color: 'rgba(255, 255, 255, 0.3)'
+}
+},
+axisLabel: {
+color: 'rgba(255, 255, 255, 0.7)',
+formatter: '{value}%'
+},
+splitLine: {
+lineStyle: {
+color: 'rgba(255, 255, 255, 0.1)'
+}
+}
+},
+series: [
+{
+name: 'Antes do Treinamento',
+type: 'line',
+data: [1.2, 0.8, -0.5, 1.5],
+smooth: true,
+lineStyle: {
+width: 3,
+color: 'rgba(252, 141, 98, 1)'
+},
+symbol: 'none',
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0,
+color: 'rgba(252, 141, 98, 0.2)'
+}, {
+offset: 1,
+color: 'rgba(252, 141, 98, 0.01)'
+}]
+}
+}
+},
+{
+name: 'Depois do Treinamento',
+type: 'line',
+data: [2.5, 4.8, 7.2, 9.5],
+smooth: true,
+lineStyle: {
+width: 3,
+color: 'rgba(87, 181, 231, 1)'
+},
+symbol: 'none',
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0,
+color: 'rgba(87, 181, 231, 0.2)'
+}, {
+offset: 1,
+color: 'rgba(87, 181, 231, 0.01)'
+}]
+}
+}
+}
+],
+color: ['rgba(252, 141, 98, 1)', 'rgba(87, 181, 231, 1)']
+};
+myChart.setOption(option);
+// Countdown
+function updateCountdown() {
+const countdownElements = document.querySelectorAll('#countdown');
+countdownElements.forEach(el => {
+const parts = el.textContent.split(':');
+let hours = parseInt(parts[0]);
+let minutes = parseInt(parts[1]);
+let seconds = parseInt(parts[2]);
+seconds--;
+if (seconds < 0) {
+seconds = 59;
+minutes--;
+if (minutes < 0) {
+minutes = 59;
+hours--;
+if (hours < 0) {
+hours = 5;
+minutes = 59;
+seconds = 59;
+}
+}
+}
+el.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+});
+}
+setInterval(updateCountdown, 1000);
+// Online users counter
+function updateOnlineUsers() {
+const onlineUsersElement = document.getElementById('online-users');
+let currentUsers = parseInt(onlineUsersElement.textContent);
+// Random fluctuation between -2 and +5
+const change = Math.floor(Math.random() * 8) - 2;
+currentUsers += change;
+// Keep within reasonable bounds
+if (currentUsers < 120) currentUsers = 120;
+if (currentUsers > 180) currentUsers = 180;
+onlineUsersElement.textContent = currentUsers;
+}
+setInterval(updateOnlineUsers, 5000);
+// Set today's date
+const today = new Date();
+const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+document.getElementById('today-date').textContent = today.toLocaleDateString('pt-BR', options);
+// Show floating notifications randomly
+function showRandomNotification() {
+const notification = document.getElementById('user-notification');
+notification.classList.remove('hidden');
+setTimeout(() => {
+notification.classList.add('hidden');
+}, 5000);
+}
+// Show first notification after 10 seconds
+setTimeout(showRandomNotification, 10000);
+// Then show randomly between 30-90 seconds
+setInterval(() => {
+const randomDelay = Math.floor(Math.random() * 60000) + 30000;
+setTimeout(showRandomNotification, randomDelay);
+}, 90000);
+// Resize chart on window resize
+window.addEventListener('resize', function() {
+myChart.resize();
+});
+});
+</script>
+</body>
+</html>
